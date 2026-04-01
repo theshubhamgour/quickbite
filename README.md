@@ -8,6 +8,8 @@ A complete, beginner-friendly food ordering web application inspired by Zomato. 
 
 This visual diagram explains the flow of the application. It maps out how the user interacts with the Frontend, which communicates with the Node.js API to perform actions against the MongoDB database.
 
+<img width="1341" height="717" alt="Screenshot 2026-04-02 at 1 56 32 AM" src="https://github.com/user-attachments/assets/05abb716-9ee0-44c8-aae7-295254d9f6c2" />
+
 ---
 
 ## 🛠 Prerequisites
