@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite | Food Delivery App</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .btn-group .btn { border-radius: 0; }
+    .btn-group .btn:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+    .btn-group .btn:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+    .nav-pills .nav-link { color: var(--muted-text); font-weight: 600; cursor: pointer; }
+    .nav-pills .nav-link.active { background-color: var(--primary-color); color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- =============================== -->
+  <!-- LANDING SCREEN (Not Logged In) -->
+  <!-- =============================== -->
+  <div id="landingScreen" class="landing-screen" style="display: none;">
+    <div class="landing-split">
+      
+      <!-- Left Side: Phone Mockup -->
+      <div class="landing-left">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <h1>QuickBite</h1>
+            <p>Your favorite food,<br>delivered fast.</p>
+            
+            <div class="phone-food-cards">
+              <div class="phone-card-skeleton">
+                <div class="phone-skeleton-avatar"></div>
+                <div class="phone-skeleton-lines">
+                  <div class="phone-skeleton-line-1"></div>
+                  <div class="phone-skeleton-line-2"></div>
+                </div>
+              </div>
+              <div class="phone-card-skeleton">
+                <div class="phone-skeleton-avatar"></div>
+                <div class="phone-skeleton-lines">
+                  <div class="phone-skeleton-line-1"></div>
+                  <div class="phone-skeleton-line-2"></div>
+                </div>
+              </div>
+              <div class="phone-card-skeleton">
+                <div class="phone-skeleton-avatar"></div>
+                <div class="phone-skeleton-lines">
+                  <div class="phone-skeleton-line-1"></div>
+                  <div class="phone-skeleton-line-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Auth Forms -->
+      <div class="landing-right">
+        <div class="auth-card" style="box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #efefef;">
+          
+          <h3 class="text-center fw-bold mb-4" style="color: var(--primary-color);">Welcome Back</h3>
+
+          <!-- Nav Tabs -->
+          <ul class="nav nav-pills nav-fill mb-4" id="authTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active w-100" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-panel" type="button" role="tab">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link w-100" id="register-tab" data-bs-toggle="pill" data-bs-target="#register-panel" type="button" role="tab">Sign Up</button>
+            </li>
+          </ul>
+
+          <!-- Tab Content -->
+          <div class="tab-content">
+            
+            <!-- LOGIN PANEL -->
+            <div class="tab-pane fade show active" id="login-panel" role="tabpanel">
+              <div id="loginError" class="alert alert-danger d-none text-center" role="alert"></div>
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginUsername" class="form-label text-muted fw-bold">Username</label>
+                  <input type="text" class="form-control" id="loginUsername" placeholder="e.g. testuser" required>
+                </div>
+                
+                <div class="mb-4">
+                  <label for="loginPassword" class="form-label text-muted fw-bold">Password</label>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="e.g. password123" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary-custom w-100 fs-5 pb-2 pt-2">Login</button>
+              </form>
+            </div>
+
+            <!-- REGISTER PANEL -->
+            <div class="tab-pane fade" id="register-panel" role="tabpanel">
+              <div id="registerMsg" class="alert d-none text-center" role="alert"></div>
+              <form id="registerForm">
+                <div class="mb-3">
+                  <label for="regUsername" class="form-label text-muted fw-bold">Choose a Username</label>
+                  <input type="text" class="form-control" id="regUsername" placeholder="Enter username" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="regPassword" class="form-label text-muted fw-bold">Create Password</label>
+                  <input type="password" class="form-control" id="regPassword" placeholder="Enter password" required>
+                </div>
+
+                <div class="mb-4">
+                  <label for="regLocation" class="form-label text-muted fw-bold">Your City Location</label>
+                  <input type="text" class="form-control" id="regLocation" placeholder="e.g. Mumbai" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary-custom w-100 fs-5 pb-2 pt-2">Create Account</button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =============================== -->
+  <!-- MAIN APP SCREEN (Logged In) -->
+  <!-- =============================== -->
+  <div id="mainAppScreen" style="display: none;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">QuickBite</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav align-items-center" id="authLinks">
+            <!-- Populated dynamically by script.js -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-title">Discover the best food & drinks in Nagpur</h1>
+        <p class="hero-subtitle">Order your favorite meals from top restaurants, fast and fresh.</p>
+      </div>
+    </section>
+
+    <!-- Food Listings (Populated by script.js) -->
+    <div class="container mb-5">
+      <div class="row" id="foodContainer">
+        <!-- Loading Placeholder -->
+        <div class="col-12 text-center text-muted">
+          <div class="spinner-border text-danger" role="status"></div>
+          <p class="mt-2">Loading hot food near you...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container text-muted text-center">
+        <p class="mb-0">© 2024 QuickBite. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div> <!-- Ends #mainAppScreen -->
+
+
+  <!-- Cart Modal Structure (Global Overlay) -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content" style="border-radius: 16px; border: none; border-top: 6px solid var(--primary-color);">
+        <div class="modal-header border-bottom-0 pb-0">
+          <h5 class="modal-title fw-bold fs-4" id="cartModalLabel">Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-4" id="cartItemsList">
+          <!-- Cart items loaded here via script.js -->
+        </div>
+        <div class="modal-footer border-top-0 pt-0">
+          <button type="button" class="btn btn-primary-custom w-100 fs-5 pb-2 pt-2" id="cartCheckoutBtn" onclick="placeOrder()">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
