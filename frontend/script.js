@@ -25,6 +25,13 @@ function checkAuth() {
   if (user) {
     if (landingScreen) landingScreen.style.display = 'none';
     if (mainAppScreen) mainAppScreen.style.display = 'block';
+    
+    // Dynamically update the Hero Title
+    const heroTitle = document.getElementById('heroTitle');
+    if (heroTitle) {
+      const location = user.location || 'Nagpur';
+      heroTitle.textContent = `Discover the best food & drinks in ${location}`;
+    }
 
     if (authLinks) {
       authLinks.innerHTML = `
