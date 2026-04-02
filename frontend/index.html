@@ -12,8 +12,8 @@
     .btn-group .btn { border-radius: 0; }
     .btn-group .btn:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
     .btn-group .btn:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
-    .nav-pills .nav-link { color: var(--muted-text); font-weight: 600; cursor: pointer; }
-    .nav-pills .nav-link.active { background-color: var(--primary-color); color: white; }
+    .nav-pills .nav-link { color: var(--muted-text) !important; font-weight: 600; cursor: pointer; margin-left: 0 !important; }
+    .nav-pills .nav-link.active { background-color: var(--primary-color) !important; color: white !important; }
   </style>
 </head>
 <body>
@@ -111,7 +111,22 @@
 
                 <div class="mb-4">
                   <label for="regLocation" class="form-label text-muted fw-bold">Your City Location</label>
-                  <input type="text" class="form-control" id="regLocation" placeholder="e.g. Mumbai" required>
+                  <select class="form-select form-control" id="regLocation" required>
+                    <option value="" disabled selected>Select a city</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Surat">Surat</option>
+                  </select>
                 </div>
                 
                 <button type="submit" class="btn btn-primary-custom w-100 fs-5 pb-2 pt-2">Create Account</button>
