@@ -14,6 +14,8 @@
     .btn-group .btn:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
     .nav-pills .nav-link { color: var(--muted-text) !important; font-weight: 600; cursor: pointer; margin-left: 0 !important; }
     .nav-pills .nav-link.active { background-color: var(--primary-color) !important; color: white !important; }
+    .cuisine-tabs .nav-link { border: none; background: none; padding: 0.8rem 1.5rem; border-radius: 12px; transition: all 0.3s ease; }
+    .cuisine-tabs .nav-link:hover:not(.active) { background-color: rgba(0,0,0,0.05); color: var(--primary-color) !important; }
   </style>
 </head>
 <body>
@@ -169,6 +171,24 @@
         <p class="hero-subtitle">Order your favorite meals from top restaurants, fast and fresh.</p>
       </div>
     </section>
+
+    <!-- Cuisine Tabs -->
+    <div class="container mb-4">
+      <ul class="nav nav-pills justify-content-center cuisine-tabs" id="cuisineTabs">
+        <li class="nav-item">
+          <button class="nav-link active" onclick="filterFoods('All')">All</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" onclick="filterFoods('Indian')">Indian</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" onclick="filterFoods('Chinese')">Chinese</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" onclick="filterFoods('Sweets')">Sweets</button>
+        </li>
+      </ul>
+    </div>
 
     <!-- Food Listings (Populated by script.js) -->
     <div class="container mb-5">

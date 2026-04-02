@@ -157,13 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
 // ------------------------------------------------------------------
 // FOODS & CART (index.html)
 // ------------------------------------------------------------------
+let currentCategory = 'All';
+
 async function loadFoods() {
   const foodContainer = document.getElementById('foodContainer');
   if (!foodContainer) return;
 
   try {
     const res = await fetch(`${API_URL}/foods`);
-    window.foodList = await res.json(); // Save to global for easily looking up prices later
+    window.foodList = await res.json(); 
 
     renderFoodCards();
   } catch (err) {
@@ -171,11 +173,36 @@ async function loadFoods() {
   }
 }
 
+function filterFoods(category) {
+  currentCategory = category;
+  
+  // Update Tab active state
+  const tabs = document.querySelectorAll('#cuisineTabs .nav-link');
+  tabs.forEach(tab => {
+    if (tab.textContent.trim() === category) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  renderFoodCards();
+}
+
 function renderFoodCards() {
   const foodContainer = document.getElementById('foodContainer');
   if (!foodContainer || !window.foodList) return;
 
-  foodContainer.innerHTML = window.foodList.map(food => {
+  const filteredFoods = currentCategory === 'All' 
+    ? window.foodList 
+    : window.foodList.filter(f => f.category === currentCategory);
+
+  if (filteredFoods.length === 0) {
+    foodContainer.innerHTML = '<p class="text-muted text-center w-100 my-5">No items found in this category.</p>';
+    return;
+  }
+
+  foodContainer.innerHTML = filteredFoods.map(food => {
     
     // Check if food is in cart already
     const cartItem = cart[food.name];
