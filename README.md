@@ -1,6 +1,6 @@
 # 🍔 QuickBite (FoodieHub) - Food Delivery App
 
-A complete, beginner-friendly food ordering web application inspired by Zomato. Built with a clean, modern UI and a simple Express & MongoDB backend.
+A complete, beginner-friendly food ordering web application. Built with a clean, modern UI and a simple Express & MongoDB backend.
 
 ---
 
@@ -75,7 +75,7 @@ Docker automates the unified configuration and boot up of the Frontend, Backend,
    docker-compose up --build -d
    ```
 3. **Access the Application Stack:**
-   - **Frontend UI:** Open your browser to `http://localhost:80` (or just `http://localhost`) to interact with the Zomato UI.
+   - **Frontend UI:** Open your browser to `http://localhost:80` (or just `http://localhost`) to interact with the UI.
    - **Backend API:** Available at `http://localhost:5001`.
    - **MongoDB Database:** Securely exposed to port `27017` on your host.
 4. **Teardown gracefully:** Whenever you want to stop the containers, run:
